@@ -1,0 +1,8 @@
+﻿  DrawMap.cpp
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(133,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(133,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(142,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(142,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(148,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(148,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  TraPing.vcxproj -> F:\PACMAN\Traping Combo\TraPing\Debug\TraPing.exe
