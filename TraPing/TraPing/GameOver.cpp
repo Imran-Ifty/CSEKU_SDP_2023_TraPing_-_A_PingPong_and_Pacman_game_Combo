@@ -123,9 +123,8 @@ void GameOver::Update(sf::Time deltaTime)
 }
 
 void GameOver::Draw()
-{
-    mContext->mWindow->clear(sf::Color::Yellow);
-
+{   
+    mContext->mWindow->clear();
     //Draw to the window
     mContext->mWindow->draw(mGameOverTitle);
     mContext->mWindow->draw(mGameRetryButton);

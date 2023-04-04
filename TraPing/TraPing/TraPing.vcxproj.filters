@@ -28,6 +28,9 @@
     <Filter Include="Resource Files\score">
       <UniqueIdentifier>{d5ff92aa-9a6c-4724-887c-1d6065b6800f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\MapFile">
+      <UniqueIdentifier>{4315d1ea-4a99-4716-b75a-4198d22d2a2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -58,6 +61,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ScoreBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -96,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ScoreBoard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -186,7 +195,10 @@
     <Image Include="img\wall.jpg">
       <Filter>Resource Files\img</Filter>
     </Image>
-    <Image Include="img\شش.png">
+    <Image Include="img\looo.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\bg.jpg">
       <Filter>Resource Files\img</Filter>
     </Image>
   </ItemGroup>
@@ -221,6 +233,9 @@
     <Media Include="effect\win.wav">
       <Filter>Resource Files\effect</Filter>
     </Media>
+    <Media Include="effect\menuSong.mp3">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
   </ItemGroup>
   <ItemGroup>
     <Text Include="map\drawurmaze.txt">
@@ -237,6 +252,12 @@
     </Text>
     <Text Include="Score\Score.txt">
       <Filter>Resource Files\score</Filter>
+    </Text>
+    <Text Include="filename.txt">
+      <Filter>Resource Files\MapFile</Filter>
+    </Text>
+    <Text Include="map\map.txt">
+      <Filter>Resource Files\map</Filter>
     </Text>
   </ItemGroup>
 </Project>

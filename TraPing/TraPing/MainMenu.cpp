@@ -18,36 +18,62 @@ MainMenu::~MainMenu()
 
 void MainMenu::Init()
 {
+	// main menu sound
 
-	std::cout << "asd " << std::endl;
 
+	if (!font1.loadFromFile("font/Squares.ttf"))
+		std::cout << "Error" << std::endl;
+
+
+	// backgroud 
+	if (!tBackgr.loadFromFile("img/bg.jpg")) {
+		std::cout << "not Backgroud " << std::endl;
+	}
+	
+	// Create a sprite to display the background image
+	sBackgr.setTexture(tBackgr);
+	// Set the background sprite to cover the entire window
+	sBackgr.setScale(
+		float(mContext->mWindow->getSize().x) / sBackgr.getTexture()->getSize().x,
+		float(mContext->mWindow->getSize().y) / sBackgr.getTexture()->getSize().y
+	);
+
+
+
+	mGameTitle.setFont(font1);
+	mGameTitle.setPosition(370, 80);
+	mGameTitle.setFillColor(sf::Color::Cyan);
+	mGameTitle.setStyle(sf::Text::Bold);
+	mGameTitle.setCharacterSize(45);
+	mGameTitle.setString("TraPing");  //To print word "Score"
 	
 	if (!font.loadFromFile("font/prstartk.ttf"))
 	{
 		std::cout << "Menu Font ARIAL not found" << std::endl;
 	}
 	//-----------------------------------------MENU--------------------------------------------------
+	int i = 310;
 	menu[0].setFont(font);
-	menu[0].setFillColor(sf::Color::Yellow);
+	menu[0].setFillColor(sf::Color::Cyan);
 	menu[0].setString("Start Game");
-	menu[0].setPosition(sf::Vector2f(575, 900 / (MAX_NUMBER_OF_ITEMS + 1) * 1));
+	menu[0].setPosition(sf::Vector2f(575, i));
 
 
 	menu[1].setFont(font);
 	menu[1].setFillColor(sf::Color::White);
 	menu[1].setString("Ladder Board");
-	menu[1].setPosition(sf::Vector2f(575, 900 / (MAX_NUMBER_OF_ITEMS + 1) * 1.7));
+	menu[1].setPosition(sf::Vector2f(575,i*1.3));
 
 
 	menu[2].setFont(font);
 	menu[2].setFillColor(sf::Color::White);
 	menu[2].setString("Draw your Maze");
-	menu[2].setPosition(sf::Vector2f(575, 900 / (MAX_NUMBER_OF_ITEMS + 1) * 2.3));
+	menu[2].setPosition(sf::Vector2f(575, i*1.6));
 
 	menu[3].setFont(font);
 	menu[3].setFillColor(sf::Color::White);
 	menu[3].setString("Exit");
-	menu[3].setPosition(sf::Vector2f(575, 900 / (MAX_NUMBER_OF_ITEMS + 1) * 3));
+	menu[3].setPosition(sf::Vector2f(575, i*1.9));
 	for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)
 	{
 		menu[i].setScale(1, 2);
@@ -75,24 +101,25 @@ void MainMenu::ProcessInput()
 			case sf::Keyboard::Down:
 				MoveDown();
 				break;
-				//----------------------------------(Control on The Return value )---------------------------
+			
+			// game setting browser
 			case sf::Keyboard::Return:
 
 				switch (GetPressedItem())
 				{
-				case 0:                        // start game
+				case 0:                        
+					// start game
 
 					std::cout << "I am in Game" << std::endl;
+					loadMap();
 					mContext->mStates->Add(std::make_unique<GamePlay>(mContext), true);
-					//startScreen.close();
-					//gamefn(2);
+				
 					break;
 
 				case 1:
 					std::cout << "Score Board" << std::endl;
 					mContext->mStates->Add(std::make_unique<ScoreBoard>(mContext), true);
-					//startScreen.close();      // open setting
-					//scoreBoardfn();
+					
 					break;
 
 				case 2:
@@ -100,8 +127,6 @@ void MainMenu::ProcessInput()
 					std::cout << " Draw Maps " << std::endl;
 
 					mContext->mStates->Add(std::make_unique<DrawMap>(mContext), true);
-					//startScreen.close();
-					//draw_your_maze();                // maze 
 					break;
 
 				case 3:
@@ -132,10 +157,12 @@ void MainMenu::Update(sf::Time deltaTime)
 void MainMenu::Draw()
 {
 	mContext->mWindow->clear();
+	//mContext->mWindow->draw(sBackgr);
 	for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)
 	{
 		mContext->mWindow->draw(menu[i]);
 	}
+	mContext->mWindow->draw(mGameTitle);
 	mContext->mWindow->display();
 }
 
@@ -149,7 +176,7 @@ void MainMenu::MoveUp()
 	{
 		menu[selectedItemIndex].setFillColor(sf::Color::White);
 		selectedItemIndex--;
-		menu[selectedItemIndex].setFillColor(sf::Color::Yellow);
+		menu[selectedItemIndex].setFillColor(sf::Color::Cyan);
 	}
 }
 void MainMenu::MoveDown()
@@ -158,6 +185,32 @@ void MainMenu::MoveDown()
 	{
 		menu[selectedItemIndex].setFillColor(sf::Color::White);
 		selectedItemIndex++;
-		menu[selectedItemIndex].setFillColor(sf::Color::Yellow);
+		menu[selectedItemIndex].setFillColor(sf::Color::Cyan);
 	}
+}
+
+void MainMenu::loadMap()
+{
+	int maze[50][50];
+	int rows = 28, cols = 28;
+	std::fstream inputStream;
+	inputStream.open("map/map.txt");
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			inputStream >> maze[i][j];
+		}
+	}
+	inputStream.close();
+
+	std::ofstream outfile;
+	outfile.open("map/map1.txt", std::ios::out);
+	outfile.clear();
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++)
+			outfile << maze[i][j] << " ";
+		outfile << "\n";
+	}
+	outfile.close();
 }

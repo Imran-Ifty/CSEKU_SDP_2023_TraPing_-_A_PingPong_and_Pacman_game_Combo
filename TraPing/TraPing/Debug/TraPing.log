@@ -1,8 +1,116 @@
 ﻿  DrawMap.cpp
-F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(133,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(133,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(142,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(142,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(148,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(148,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  TraPing.vcxproj -> F:\PACMAN\Traping Combo\TraPing\Debug\TraPing.exe
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.h(67,25): warning C4305: 'initializing': truncation from 'double' to 'float'
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(151,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(151,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(158,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(158,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(164,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\DrawMap.cpp(164,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Game.cpp
+  GamePlay.cpp
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.h(67,25): warning C4305: 'initializing': truncation from 'double' to 'float'
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(43,96): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(43,64): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(44,84): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(44,48): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(113,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(113,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(248,13): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(248,48): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(252,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(252,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(260,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(260,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(274,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(274,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(293,9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(293,38): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(294,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(294,36): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(305,15): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(306,15): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(325,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.cpp(325,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  MainMenu.cpp
+F:\PACMAN\Traping Combo\TraPing\TraPing\GamePlay.h(67,25): warning C4305: 'initializing': truncation from 'double' to 'float'
+F:\PACMAN\Traping Combo\TraPing\TraPing\MainMenu.cpp(59,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\MainMenu.cpp(65,40): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\MainMenu.cpp(71,41): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+F:\PACMAN\Traping Combo\TraPing\TraPing\MainMenu.cpp(76,41): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  ScoreBoard.cpp
+  Generating Code...
+MainMenu.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::SoundBuffer::SoundBuffer(void)" (__imp_??0SoundBuffer@sf@@QAE@XZ) referenced in function "public: __thiscall MainMenu::MainMenu(class std::shared_ptr<class Context> &)" (??0MainMenu@@QAE@AAV?$shared_ptr@VContext@@@std@@@Z)
+MainMenu.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::SoundBuffer::~SoundBuffer(void)" (__imp_??1SoundBuffer@sf@@QAE@XZ) referenced in function __unwindfunclet$??0MainMenu@@QAE@AAV?$shared_ptr@VContext@@@std@@@Z$11
+F:\PACMAN\Traping Combo\TraPing\Debug\TraPing.exe : fatal error LNK1120: 2 unresolved externals

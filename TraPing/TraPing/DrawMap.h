@@ -18,6 +18,7 @@ private:
 	sf::Text mDrawMapTitle;
 	int *maze1[50][50];
 
+	sf::Font font1;
 	sf::Texture backGround, pac, wall, blinky, dot, bigdot, pink;
 	sf::Sprite  backGroundsprite, pacSprite, wallSprite, blinkySprite, dotSprite, bigdotSprite, pinkSprite;
 

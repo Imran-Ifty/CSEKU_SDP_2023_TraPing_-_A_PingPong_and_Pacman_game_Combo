@@ -1,0 +1,37 @@
+Create a boolean variable to track if the player has the power-up:
+arduino
+Copy code
+bool hasPowerUp = false;
+When the player eats a fruit, set hasPowerUp to true and start a timer for 5 seconds:
+css
+Copy code
+if (grid[y][x] == 2) { // 5 for fruits
+    hasPowerUp = true;
+    powerUpTimer.restart();
+    // remove the fruit from the grid
+    grid[y][x] = 0; // 0 for empty plane
+}
+In the game loop, check if the power-up timer has expired and set hasPowerUp to false:
+less
+Copy code
+if (hasPowerUp && powerUpTimer.getElapsedTime().asSeconds() >= 5.0f) {
+    hasPowerUp = false;
+}
+When the player presses the 'W' key and has the power-up, place a wall in the grid:
+scss
+Copy code
+if (hasPowerUp && sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+    // get the player's current grid position
+    int playerX = player.getPosition().x / GRID_SIZE;
+    int playerY = player.getPosition().y / GRID_SIZE;
+    // place a wall in the next grid cell in the player's direction
+    int nextX = playerX + dirX;
+    int nextY = playerY + dirY;
+    if (nextX >= 0 && nextX < GRID_WIDTH && nextY >= 0 && nextY < GRID_HEIGHT
+        && grid[nextY][nextX] == 0) {
+        grid[nextY][nextX] = 1; // 1 for wall
+        // play a sound effect
+        placeWallSound.play();
+    }
+}
+Note: You will need to handle the collision detection between the player, enemy, and walls separately, depending on your game's implementation.

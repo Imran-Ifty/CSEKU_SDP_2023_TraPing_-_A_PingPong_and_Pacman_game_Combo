@@ -21,14 +21,19 @@ private:
 
 	bool playButtonSelected = true, playButtonPressed = false;
 	bool exitButtonSelected = false, exitButtonPressed = false;
-	sf::Font font;
+	sf::Font font , font1 , sife_font;
 	int selectedItemIndex;
+	sf::Texture tBackgr;
+	sf::Sprite  sBackgr;
+	sf::SoundBuffer buffer;
+
+
+	sf::Text  text_score, text, control, control1, control2, control3, control4;
 	sf::Text menu[MAX_NUMBER_OF_ITEMS];
 
 public:
 	MainMenu(std::shared_ptr<Context>& context);
 	~MainMenu();
-
 	void Init() override;
 	void ProcessInput() override;
 	void Update(sf::Time deltaTime) override;
@@ -36,7 +41,15 @@ public:
 	void MoveUp();
 	void MoveDown();
 	int GetPressedItem() { return selectedItemIndex; }
-
+	void loadMap();
 };
 
+
+struct Maps {
+	std::string map = "map/map.txt";
+	std::string map1 = "map/map1.txt";
+	std::string map2 = "map/map2.txt";
+	std::string map3 = "map/map3.txt";
+	std::string drawMap = "map/drawurmaze.txt";
+};
 #endif // MAIN_MENU_HPP

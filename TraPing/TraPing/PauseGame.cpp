@@ -66,7 +66,7 @@ void PauseGame::Draw()
 {
 
     //Draw to the window
-    mContext->mWindow->clear();
+   // mContext->mWindow->clear();
     mContext->mWindow->draw(pauseText);
     mContext->mWindow->display();
 

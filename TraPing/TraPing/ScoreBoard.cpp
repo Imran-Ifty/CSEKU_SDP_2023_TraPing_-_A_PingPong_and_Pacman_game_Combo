@@ -122,7 +122,7 @@ void ScoreBoard::Save_Score_Board(int finale_score)
 void ScoreBoard::Print_Score_Board(sf::RenderWindow& wind)
 {
 	float x = 600.0, y = 0;
-	Text_Style(Desplay_Score_Word, x, y, "Score", sf::Color::White, 100);
+	Text_Style(Desplay_Score_Word, x, y, "Score", sf::Color::Cyan, 100);
 	x = 470.0; y = 120.0;
 	wind.draw(Desplay_Score_Word);
 	for (i = size - 1; i >= 0; i--, y += 90)

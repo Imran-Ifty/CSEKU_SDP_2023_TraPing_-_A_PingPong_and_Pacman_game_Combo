@@ -148,6 +148,7 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="PauseGame.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="ScoreBoard.cpp" />
     <ClCompile Include="StateManager.cpp" />
   </ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="PauseGame.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ScoreBoard.h" />
     <ClInclude Include="State.h" />
@@ -182,6 +184,7 @@
   <ItemGroup>
     <Image Include="img\abc.png" />
     <Image Include="img\Back__Score.png" />
+    <Image Include="img\bg.jpg" />
     <Image Include="img\bigdot.png" />
     <Image Include="img\blinky.png" />
     <Image Include="img\blinky2.png" />
@@ -196,11 +199,12 @@
     <Image Include="img\sheet.png" />
     <Image Include="img\startbackground.jpg" />
     <Image Include="img\wall.jpg" />
-    <Image Include="img\شش.png" />
+    <Image Include="img\looo.png" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="effect\bigdot.wav" />
     <Media Include="effect\dot.wav" />
+    <Media Include="effect\menuSong.mp3" />
     <Media Include="effect\pacman_beginning.wav" />
     <Media Include="effect\pacman_chomp.wav" />
     <Media Include="effect\pacman_death.wav" />
@@ -211,7 +215,9 @@
     <Media Include="effect\win.wav" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="filename.txt" />
     <Text Include="map\drawurmaze.txt" />
+    <Text Include="map\map.txt" />
     <Text Include="map\map1.txt" />
     <Text Include="map\map2.txt" />
     <Text Include="map\map3.txt" />

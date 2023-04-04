@@ -12,74 +12,64 @@ DrawMap::~DrawMap()
 
 void DrawMap::Init()
 {
+	// declare the row and cols
+	rows = 28;
+	cols = 28;
 
-	bigdot.loadFromFile("img/bigdot.png");                        // big dot
+	// font of title side
+	if (!font1.loadFromFile("font/Squares.ttf"))
+		std::cout << "Error" << std::endl;
+
+
+	// Apple sprites 
+	if (!bigdot.loadFromFile("img/bigdot.png")) {
+		std::cout << " Not Allocated " << std::endl;
+	}                       // big dot
 	bigdotSprite.setTexture(bigdot);
 
+	// point dot sprite
+	if (!dot.loadFromFile("img/dot.png")) {
+			std::cout << " Not Allocated " << std::endl;
+	}                      
+	dotSprite.setTexture(dot);
 
-	wall.loadFromFile("img/wall.jpg");                              // Wall
+	// wall sprite 
+	wall.loadFromFile("img/wall.jpg");
 	wallSprite.setTexture(wall);
 
-	pac.loadFromFile("img/sheet.png");                            // PacmMan
-	pacSprite.setTexture(pac);
-	pacSprite.setPosition(sf::Vector2f(448, 704));
-	pacSprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
 
-	blinky.loadFromFile("img/blinky.png");                          // Blinky
-	blinkySprite.setTexture(blinky);
-	blinkySprite.setPosition(sf::Vector2f(384, 416));
-	blinkySprite.setTextureRect(sf::IntRect(0, 0, 28, 28));
-
-
-	pink.loadFromFile("img/g3.png");
-	pinkSprite.setTexture(pink);									// pinky 
-	pinkSprite.setPosition(sf::Vector2f(416, 416));
-	pinkSprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
-
-	inky.loadFromFile("img/g1.png");
-	inkySprite.setTexture(inky);									// inky 
-	inkySprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
-	inkySprite.setPosition(sf::Vector2f(448, 416));
-
-	clyde.loadFromFile("img/g4.png");
-	clydeSprite.setTexture(clyde);									// clyde
-	clydeSprite.setPosition(sf::Vector2f(480, 416));
-	clydeSprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
-
-
-	drawmaze[50][50] = {0};
-	inputStream.open("maps/drawurmaze.txt");
+	//drawmaze[50][50] = {0}; // blank screen to draw a map
+	inputStream.open("map/drawurmaze.txt");
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++) {
 			inputStream >> drawmaze[i][j];
 		}
 	}
+	inputStream.close();
 
+	// Side Title 
+	mDrawMapTitle.setFont(font1);
+	mDrawMapTitle.setPosition(1020, 30);
+	mDrawMapTitle.setFillColor(sf::Color::Cyan);
+	mDrawMapTitle.setStyle(sf::Text::Bold);
+	mDrawMapTitle.setCharacterSize(25);
+	mDrawMapTitle.setString("TraPing");
+
+	// side note and instruction
 	textur.loadFromFile("img/drawurmaze.png");
 	sprite.setTexture(textur);
-	sprite.setPosition(896, 0);
-
-
-
+	sprite.setPosition(896, 200); //896, 0 
 
 }
 
 void DrawMap::ProcessInput()
 {
 	sf::Event event;
-	while (mContext->mWindow->pollEvent(event))
+	while (window.pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
-			mContext->mWindow->close();
-
-		else if (event.text.unicode == 27) //27 Esc button
-		{
-
-			std::cout << " Back on the main Menu" << std::endl;
-			mContext->mStates->Add(std::make_unique<MainMenu>(mContext), true);
-			break;
-		}
+			window.close();
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 		{
 			std::ofstream outfile;
@@ -93,35 +83,63 @@ void DrawMap::ProcessInput()
 			outfile.close();
 			std::cout << "done";
 		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
+			std::cout << " Back on the main Menu" << std::endl;
+			mContext->mStates->Add(std::make_unique<MainMenu>(mContext), true);
+			break;
+
+		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
 		{
-			for (int i = 0; i < rows; i++)
+			std::ofstream outfile;
+			outfile.open("map/map1.txt", std::ios::out);
+			outfile.clear();
+			for (int i = 0; i < rows; i++) {
 				for (int j = 0; j < cols; j++)
-					//maze1[i][j] = drawmaze[i][j];
-
+					outfile << drawmaze[i][j] << " ";
+				outfile << "\n";
+			}
+			std::cout << " Copy Done " << std::endl;
+			outfile.close();
 			std::cout << "I am in Game" << std::endl;
 			mContext->mStates->Add(std::make_unique<GamePlay>(mContext), true);
+
+		}
+	}
+}
+
+void DrawMap::Update(sf::Time deltaTime)
+{
+
+	int b = sf::Mouse::getPosition(window).x / 32, a = sf::Mouse::getPosition(window).y / 32;
+	std::cout << " A : " << a << "  B : " << b << std::endl;
+	if (drawmaze[a][b] != 4 && drawmaze[a][b] != 6 && a != 0 && b != 0 && a != 27 && b != 27)
+	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			drawmaze[a][b] = 2; // 
+			std::cout << " small points " << std::endl;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)) // big dot
+		{
+			drawmaze[a][b] = 3;
+			std::cout << " Big Dot " << std::endl;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) 
+		{
+			drawmaze[a][b] = 1; // wall
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {  // remove 
+			drawmaze[a][b] = 0;
 		}
 	}
 	
 }
 
-void DrawMap::Update(sf::Time deltaTime)
+void DrawMap::Draw()
 {
-	int b = sf::Mouse::getPosition(window).x / 32, a = sf::Mouse::getPosition(window).y / 32;
-	if (drawmaze[a][b] != 4 && drawmaze[a][b] != 6 && a != 0 && b != 0 && a != 27 && b != 27)
-	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-			drawmaze[a][b] = 2;
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
-			drawmaze[a][b] = 3;
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-			drawmaze[a][b] = 1;
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-			drawmaze[a][b] = 0;
-	}
-
 	window.clear();
 	for (int i = 0; i < rows; i++)
 		for (int j = 0; j < cols; j++)
@@ -132,36 +150,23 @@ void DrawMap::Update(sf::Time deltaTime)
 				wallSprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
 				wallSprite.setPosition(j * 32, i * 32);
 				window.draw(wallSprite);
-
-				std::cout << "Wall" << std::endl;
 			}
-			else if (drawmaze[i][j] == 2)
+			else if (drawmaze[i][j] == 2) // 2 for point 
 			{
 				dotSprite.setTextureRect(sf::IntRect(0, 0, 16, 16));
-				dotSprite.setColor(sf::Color::Red);
+				dotSprite.setColor(sf::Color::Green);
 				dotSprite.setPosition(j * 32 + 8, i * 32 + 8);
 				window.draw(dotSprite);
 			}
-			else if (drawmaze[i][j] == 3)
+			else if (drawmaze[i][j] == 3) // 3 for apple
 			{
 				bigdotSprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
 				bigdotSprite.setPosition(j * 32, i * 32);
 				window.draw(bigdotSprite);
 			}
 		}
-
-}
-
-void DrawMap::Draw()
-{
-   // mContext->mWindow->clear();
-    //Draw to the window
-	window.draw(blinkySprite);
-	window.draw(pinkSprite);
-	window.draw(inkySprite);
-	window.draw(clydeSprite);
-	window.draw(pacSprite);
+	
+	window.draw(mDrawMapTitle);
 	window.draw(sprite);
 	window.display();
-
 }
