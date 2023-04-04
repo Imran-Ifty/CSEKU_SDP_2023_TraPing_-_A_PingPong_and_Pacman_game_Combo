@@ -10,6 +10,13 @@
 #include "MainMenu.h"
 
 
+struct MAP {
+	std::string map1 = "map/map1.txt";
+	std::string map2 = "map/map2.txt";
+	std::string map3 = "map/map3.txt";
+	std::string map4 = "map/map4.txt";
+
+}MAP;
 
 GamePlay::GamePlay(std::shared_ptr<Context> context) :
 	mContext(context),
@@ -29,10 +36,21 @@ void GamePlay::Init()
 	// init the MAPS path as map1 , map2 , map3
 	// row init 
 	rows = 28, cols = 28;
-	// map init
 
+	// map init
 	std::fstream inputStream;
-	inputStream.open("map/map1.txt");
+	switch (level) {
+	case 1:
+		inputStream.open(MAP.map1);
+		break;
+	case 2:
+		inputStream.open(MAP.map2);
+		break;
+	case 3:
+		inputStream.open(MAP.map3);
+		break;
+
+	}
 	for (int i = 0; i < rows; i++)
 		for (int j = 0; j < cols; j++)
 			inputStream >> maze1[i][j];
@@ -138,6 +156,27 @@ void GamePlay::Init()
 	dotSprite.setTexture(dot);
 	dotSprite.setColor(sf::Color::Green);
 
+	// sound design 
+	
+	if (!bGamePlay.loadFromFile("effect/gameSong.wav")) {
+			// error handling
+	}
+	else {
+		std::cout << " SOUND " << std::endl;
+	}
+
+	if (!bDot.loadFromFile("effect/point.wav")) {
+		// error handling
+	}
+	else {
+		std::cout << " SOUND " << std::endl;
+	}
+
+	mDot.setBuffer(bDot);
+	mGamePlay.setBuffer(bGamePlay);
+	mGamePlay.play();
+	mGamePlay.setLoop(true);
+
 }
 
 
@@ -155,6 +194,14 @@ void GamePlay::ProcessInput()
 
 			switch (event.key.code)
 			{
+			case sf::Keyboard ::M:
+				if (mute == false) {
+					mute = true;
+				}
+				else {
+					mute = false;
+				}
+				break;
 			case sf::Keyboard::Up:
 				std::cout << " Up " << std::endl;
 				if (y > 1 && maze1[y - 1][x] != 1) {
@@ -197,6 +244,7 @@ void GamePlay::ProcessInput()
 				break;
 
 			case sf::Keyboard::Escape:
+				mGamePlay.stop();
 				mContext->mStates->Add(std::make_unique<MainMenu>(mContext));
 				break;
 
@@ -218,14 +266,17 @@ void GamePlay::ProcessInput()
 		maze1[y][x] = 0; // 0 for empty plane
 		points += 20;
 	}
-	if (maze1[y][x] == 2) {
+	if (maze1[y][x] == 2) { // points
 		points = points + 10;
 		maze1[y][x] = 0;
+		if(!mute)
+			mDot.play();
 	}
-
 	if (hasPowerUp && powerUpTimer.getElapsedTime().asSeconds() >= 5.0f) {
 		hasPowerUp = false;
 	}
+	std::string s = std::to_string(points);
+	text.setString(s);
 
 	mContext->mWindow->clear();
 
@@ -313,6 +364,22 @@ void GamePlay::Update(sf::Time deltaTime)
 			// play a sound effect
 			//placeWallSound.play();
 		}
+	}
+
+
+	// check if all fruits are gone
+	check = 0;
+	for (int i = 0; i < 28; i++) {
+		for (int j = 0; j < 28; j++) {
+			if (maze1[i][j] == 2) {
+				check++;
+			}
+		}
+	}
+	if (check == 0) 
+	{
+		level++;
+		std::cout << " End " << std::endl;
 	}
 	
 }

@@ -236,6 +236,21 @@
     <Media Include="effect\menuSong.mp3">
       <Filter>Resource Files\effect</Filter>
     </Media>
+    <Media Include="effect\menu.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\click.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\pressed.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\gameSong.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\point.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
   </ItemGroup>
   <ItemGroup>
     <Text Include="map\drawurmaze.txt">

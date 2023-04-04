@@ -25,7 +25,8 @@ private:
 	int selectedItemIndex;
 	sf::Texture tBackgr;
 	sf::Sprite  sBackgr;
-	sf::SoundBuffer buffer;
+	sf::SoundBuffer buffer , bClick , bPressed;
+	sf::Sound menuSound , mClick , mPressed;
 
 
 	sf::Text  text_score, text, control, control1, control2, control3, control4;

@@ -82,7 +82,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\SFML-2.5.1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -203,7 +203,10 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="effect\bigdot.wav" />
+    <Media Include="effect\click.wav" />
     <Media Include="effect\dot.wav" />
+    <Media Include="effect\gameSong.wav" />
+    <Media Include="effect\menu.wav" />
     <Media Include="effect\menuSong.mp3" />
     <Media Include="effect\pacman_beginning.wav" />
     <Media Include="effect\pacman_chomp.wav" />
@@ -211,6 +214,8 @@
     <Media Include="effect\pacman_eatghost.wav" />
     <Media Include="effect\pacman_extrapac.wav" />
     <Media Include="effect\pacman_intermission.wav" />
+    <Media Include="effect\point.wav" />
+    <Media Include="effect\pressed.wav" />
     <Media Include="effect\siren.wav" />
     <Media Include="effect\win.wav" />
   </ItemGroup>

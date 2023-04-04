@@ -19,6 +19,35 @@ MainMenu::~MainMenu()
 void MainMenu::Init()
 {
 	// main menu sound
+	if (!buffer.loadFromFile("effect/menu.wav")) {
+		// error handling
+	}
+	else {
+		std::cout << " SOUND " << std::endl;
+	}
+	if (!bClick.loadFromFile("effect/click.wav")) {
+		// error handling
+
+		std::cout << " Error " << std::endl;
+	}
+	else {
+	}
+	if (!bPressed.loadFromFile("effect/pressed.wav")) {
+		// error handling
+		std::cout << " Error " << std::endl;
+	}
+	else {
+	}
+
+	menuSound.setBuffer(buffer); // menu sound
+	mClick.setBuffer(bClick);
+	mPressed.setBuffer(bPressed);
+
+	menuSound.play();
+
+	// main menu click sound
+
+
 
 
 	if (!font1.loadFromFile("font/Squares.ttf"))
@@ -96,9 +125,12 @@ void MainMenu::ProcessInput()
 			{
 			case sf::Keyboard::Up:
 				MoveUp();
+				mClick.play();
 				break;
 
 			case sf::Keyboard::Down:
+
+				mClick.play();
 				MoveDown();
 				break;
 			
@@ -111,6 +143,8 @@ void MainMenu::ProcessInput()
 					// start game
 
 					std::cout << "I am in Game" << std::endl;
+					mPressed.play();
+					menuSound.stop();
 					loadMap();
 					mContext->mStates->Add(std::make_unique<GamePlay>(mContext), true);
 				
@@ -118,6 +152,8 @@ void MainMenu::ProcessInput()
 
 				case 1:
 					std::cout << "Score Board" << std::endl;
+					mPressed.play();
+					menuSound.stop();
 					mContext->mStates->Add(std::make_unique<ScoreBoard>(mContext), true);
 					
 					break;
@@ -125,7 +161,8 @@ void MainMenu::ProcessInput()
 				case 2:
 
 					std::cout << " Draw Maps " << std::endl;
-
+					mPressed.play();
+					menuSound.stop();
 					mContext->mStates->Add(std::make_unique<DrawMap>(mContext), true);
 					break;
 

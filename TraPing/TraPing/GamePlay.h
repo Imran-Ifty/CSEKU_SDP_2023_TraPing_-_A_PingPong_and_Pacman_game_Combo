@@ -38,10 +38,14 @@ private:
 	sf::Sprite  backGroundsprite, pacSprite, wallSprite, blinkySprite, dotSprite, bigdotSprite, pinkSprite;
 	sf::Texture playerTexture;
 	sf::Sprite player;
+	sf::SoundBuffer bGamePlay, bGameOver, bDot , bApple;
+	sf::Sound mGamePlay, mGameOver, mDot , mApple;
 	// side screen assets
 	sf::Text  text_score, text, control, control1, control2, control3, control4;
 	sf::Font font, fon, fo ,sideTitleFont;
 	std::string s;
+
+	bool mute = false;
 
 	// for player movement
 	int Besh_x = 0, Besh_y = 0;
@@ -50,7 +54,10 @@ private:
 	bool move_ch; 
 	float playerSpeed = 32.0f;
 	int points = 0;
+	int check = 0;
 
+	// level
+	int level = 1;
 	//Player pp;
 
 public:
