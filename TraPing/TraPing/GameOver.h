@@ -15,6 +15,7 @@ class GameOver : public Engine::State
 private:
 	std::shared_ptr<Context> mContext;
 	sf::Text mGameOverTitle, mGameRetryButton, mGameExitButton;
+	sf::Font font1, font2;
 
 	bool retryButtonSelected, retryButtonPressed;
 	bool exitButtonSelected, exitButtonPressed;

@@ -20,12 +20,13 @@ class GamePlay : public Engine::State
 private:
 	std::shared_ptr<Context> mContext;
 	//Add score
-	sf::Text mScoreText , mGameTitle;
+	sf::Text mScoreText , mGameTitle , fNextLevel;
 	sf::Texture tHero;
 	sf::Sprite sHero;
 	int mScore ,rows , cols;
+	std::string levelNo = "1";
 	//float speed = 100.0f;
-	sf::Clock clock , powerUpTimer;
+	sf::Clock clock , powerUpTimer , deadTime;
 	sf::Vector2f movement;
 	float time;
 
@@ -34,18 +35,19 @@ private:
 	// main screen assest
 	// Texture backGround, pac, wall, blinky, dot, bigdot, pink;
 
-	sf::Texture backGround, pac, wall, blinky, dot, bigdot, pink;
-	sf::Sprite  backGroundsprite, pacSprite, wallSprite, blinkySprite, dotSprite, bigdotSprite, pinkSprite;
+	sf::Texture backGround, pac, wall, blinky, dot, bigdot, pink , tpower ,tLife;
+	sf::Sprite  backGroundsprite, pacSprite, wallSprite, blinkySprite, sLife , dotSprite, bigdotSprite, pinkSprite, power;
 	sf::Texture playerTexture;
 	sf::Sprite player;
-	sf::SoundBuffer bGamePlay, bGameOver, bDot , bApple;
-	sf::Sound mGamePlay, mGameOver, mDot , mApple;
+	sf::SoundBuffer bGamePlay, bGameOver, bDot , bApple , bBDot;
+	sf::Sound mGamePlay, mGameOver, mDot , mApple , mBDot;
 	// side screen assets
 	sf::Text  text_score, text, control, control1, control2, control3, control4;
-	sf::Font font, fon, fo ,sideTitleFont;
+	sf::Font font, fon, fo ,sideTitleFont , nextLevel;
 	std::string s;
+	int live;
 
-	bool mute = false;
+	bool mute = false, dead = false , deadIN = false , dooo = false;
 
 	// for player movement
 	int Besh_x = 0, Besh_y = 0;
@@ -59,6 +61,10 @@ private:
 	// level
 	int level = 1;
 	//Player pp;
+
+	// enemy number
+	int enemyCount;
+	int coll = 0;
 
 public:
 	sf::Vector2f playerPos;
@@ -75,6 +81,7 @@ public:
 	GamePlay(std::shared_ptr<Context> mContext);
 	~GamePlay();
 	//void drop(int y, int x);
+	void powerUp();
 	void Init() override;
 	void ProcessInput() override;
 	void Update(sf::Time deltaTime) override;
@@ -82,8 +89,6 @@ public:
 	//Method
 	void Pause() override;
 	void Start() override;
-
-	int pac_diffPOS(int Next_moving);
 
 	struct Enemy
 	{
@@ -95,7 +100,6 @@ public:
 			dx = 5 - rand() % 8;
 			dy = 5 - rand() % 8;
 		}
-
 		void move(int maze1[][50], int ts)
 		{
 			x += dx;

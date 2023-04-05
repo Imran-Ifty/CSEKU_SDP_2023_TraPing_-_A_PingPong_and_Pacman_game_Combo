@@ -16,23 +16,30 @@ void GameOver::Init()
 
     //Game over
 //    mGameOverTitle.setFont(mContext->mAssets->getFont(AssetsID::E_Main_Font));
+    if (!font1.loadFromFile("font/Squares.ttf"))
+        std::cout << "Error" << std::endl;
+    mGameOverTitle.setFont(font1);
+    int i = 310;
+    mGameOverTitle.setFont(font1);
+    mGameOverTitle.setFillColor(sf::Color::Cyan);
     mGameOverTitle.setString("Game Over");
-    mGameOverTitle.setOrigin(mGameOverTitle.getLocalBounds().width / 2, mGameOverTitle.getLocalBounds().height / 2);
-    mGameOverTitle.setPosition(mContext->mWindow->getSize().x / 2, mContext->mWindow->getSize().y / 2 - 150.f);
-
+    mGameOverTitle.setPosition(sf::Vector2f(400, 128));
+    mGameRetryButton.setCharacterSize(30);
     //Retry game
-    //mGameRetryButton.setFont(mContext->mAssets->getFont(AssetsID::E_Main_Font));
-    mGameRetryButton.setString("Retry");
-    mGameRetryButton.setOrigin(mGameOverTitle.getLocalBounds().width / 2, mGameOverTitle.getLocalBounds().height / 2);
-    mGameRetryButton.setPosition(mContext->mWindow->getSize().x / 2, mContext->mWindow->getSize().y / 2 - 30.f);
-    mGameRetryButton.setCharacterSize(40);
 
+    mGameRetryButton.setFont(font1);
+    mGameRetryButton.setFillColor(sf::Color::White);
+    mGameRetryButton.setString("Retry");
+    mGameRetryButton.setPosition(sf::Vector2f(600, i+50));
+    mGameRetryButton.setCharacterSize(20);
     //Exit game
-   // mGameExitButton.setFont(mContext->mAssets->getFont(AssetsID::E_Main_Font));
+
+
+    mGameExitButton.setFont(font1);
+    mGameExitButton.setFillColor(sf::Color::White);
     mGameExitButton.setString("Exit");
-    mGameExitButton.setOrigin(mGameOverTitle.getLocalBounds().width / 2, mGameOverTitle.getLocalBounds().height / 2);
-    mGameExitButton.setPosition(mContext->mWindow->getSize().x / 2, mContext->mWindow->getSize().y / 2 + 20.f);
-    mGameExitButton.setCharacterSize(40);
+    mGameExitButton.setPosition(sf::Vector2f(600, i + 175));
+    mGameExitButton.setCharacterSize(20);
 }
 
 void GameOver::ProcessInput()
@@ -96,17 +103,16 @@ void GameOver::ProcessInput()
 
 void GameOver::Update(sf::Time deltaTime)
 {
-    deltaTime.asMilliseconds();
 
     if (retryButtonSelected)
     {
-        mGameRetryButton.setFillColor(sf::Color::Black);
+        mGameRetryButton.setFillColor(sf::Color::Cyan);
         mGameExitButton.setFillColor(sf::Color::White);
     }
 
     else
     {
-        mGameExitButton.setFillColor(sf::Color::Black);
+        mGameExitButton.setFillColor(sf::Color::Cyan);
         mGameRetryButton.setFillColor(sf::Color::White);
     }
 

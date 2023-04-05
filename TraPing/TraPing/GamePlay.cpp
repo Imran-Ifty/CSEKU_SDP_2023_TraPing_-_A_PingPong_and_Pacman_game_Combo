@@ -23,7 +23,7 @@ GamePlay::GamePlay(std::shared_ptr<Context> context) :
 	mElapsedTime(sf::Time::Zero),
 	isPaused(false)
 {
-	mScore = 0;
+	//mScore = 0;
 }
 
 GamePlay::~GamePlay()
@@ -57,12 +57,15 @@ void GamePlay::Init()
 
 	inputStream.close();
 
+	points = 0;
+	enemyCount = 3 + level;  // ENEMY NUMBER
+	dooo = false;
 	// set a view 
 	sf::View view(sf::FloatRect(0, 0, mContext->mWindow->getSize().x, mContext->mWindow->getSize().y));
 	view.setCenter(mContext->mWindow->getSize().x / 2, mContext->mWindow->getSize().y / 2);
 	mContext->mWindow->setView(view);
 
-	std::cout << " I am in Game " << std::endl;;
+	std::cout << " I am in Game " << std::endl;
 
 	// init the fonts
 	if (!font.loadFromFile("font/Kaph-Regular.ttf"))
@@ -70,6 +73,14 @@ void GamePlay::Init()
 
 	if (!sideTitleFont.loadFromFile("font/Squares.ttf"))
 		std::cout << "Error" << std::endl;
+	
+	if (!nextLevel.loadFromFile("font/prstartk.ttf"))
+    {
+        std::cout << "Menu Font ARIAL not found" << std::endl;
+    }
+    //-----------------------------------------MENU--------------------------------------------------
+	
+
 
 	mGameTitle.setFont(sideTitleFont);
 	mGameTitle.setPosition(1020, 30);
@@ -77,51 +88,71 @@ void GamePlay::Init()
 	mGameTitle.setStyle(sf::Text::Bold);
 	mGameTitle.setCharacterSize(25);
 	mGameTitle.setString("TraPing");
+	//
+	// lives of main player
+	live = 6;
+
+	// if power is gained
+	if (!tLife.loadFromFile("img/live.png")) {
+		std::cout << "Player image not found !!! " << std::endl;
+	}
+	sLife.setTexture(tLife);
+	
+	fNextLevel.setFont(font);
+	fNextLevel.setPosition(960, 180 + 100);
+	fNextLevel.setFillColor(sf::Color::Cyan);
+	fNextLevel.setStyle(sf::Text::Bold);
+	fNextLevel.setCharacterSize(40);
+	fNextLevel.setString("Level :  " + levelNo);
+
 
 	// score text rendering
 	text_score.setFont(font);
-	text_score.setPosition(1080, 128);
+	text_score.setPosition(960, 128+180+90);
 	text_score.setFillColor(sf::Color::Cyan);
 	text_score.setStyle(sf::Text::Bold);
-	text_score.setCharacterSize(60);
-	text_score.setString("Score : ");  //To print word "Score"
+	text_score.setCharacterSize(50);
+	text_score.setString("Score :  ");  //To print word "Score"
 
-	text.setFont(font);
-	text.setPosition(1400, 150); //1248
+	text.setFont(sideTitleFont);
+	text.setPosition(1230, 128+180+80); //1248
 	text.setFillColor(sf:: Color::Cyan);
+	text.setCharacterSize(17);
 	text.setStyle(sf::Text::Bold);
 	text.setString(s);                 //To print the score 
 
 
 	control.setFont(font);
-	control.setPosition(1056, 416);
+	control.setPosition(960, 416+100);
 	control.setFillColor(sf::Color::White);
 	control.setStyle(sf::Text::Bold);
 	control.setCharacterSize(45);
 	control.setString("Controls ");
 
 	control1.setFont(font);
-	control1.setPosition(960, 480);
+	control1.setPosition(960, 480+100);
 	control1.setFillColor(sf::Color::Green);
 	control1.setString("Arrow Keys to move around");
 
 	control2.setFont(font);
-	control2.setPosition(960, 544);
+	control2.setPosition(960, 544+100);
 	control2.setFillColor(sf::Color::Green);
 	control2.setString("P --> Pause/UnPause");
 
 	control3.setFont(font);
-	control3.setPosition(960, 608);
+	control3.setPosition(960, 608+100);
 	control3.setFillColor(sf::Color::Green);
 	control3.setString("M --> Mute/UnMute Sound");
 
 	control4.setFont(font);
-	control4.setPosition(960, 672);
+	control4.setPosition(960, 672+100);
 	control4.setFillColor(sf::Color::Green);
 	control4.setString("Esc --> Exit ");
 
 
-	/* Player & character Buildup and init*/
+	/********************************************** 
+		Player & character Buildup and init
+	***********************************************/
 
 //	player.setTexture(playerTexture);
 	if (!playerTexture.loadFromFile("img/blinky.png")) {
@@ -129,8 +160,14 @@ void GamePlay::Init()
 	}
 	player.setTexture(playerTexture);
 	player.setPosition(x * 32, y * 32);
+	player.setScale(1.2, 1.2);
 
-
+	// if power is gained
+	if (!tpower.loadFromFile("img/blinky2.png")) {
+		std::cout << "Player image not found !!! " << std::endl;
+	}
+	power.setTexture(playerTexture);
+	power.setScale(1.2, 1.2);
 
 	if (!tHero.loadFromFile("img/g1.png")) {
 		std::cout << "Hero image not found !!! " << std::endl;
@@ -156,7 +193,11 @@ void GamePlay::Init()
 	dotSprite.setTexture(dot);
 	dotSprite.setColor(sf::Color::Green);
 
-	// sound design 
+
+
+	/*****************************
+			SOUND DESIGN
+	*****************************/
 	
 	if (!bGamePlay.loadFromFile("effect/gameSong.wav")) {
 			// error handling
@@ -165,6 +206,7 @@ void GamePlay::Init()
 		std::cout << " SOUND " << std::endl;
 	}
 
+	// point sound
 	if (!bDot.loadFromFile("effect/point.wav")) {
 		// error handling
 	}
@@ -172,9 +214,18 @@ void GamePlay::Init()
 		std::cout << " SOUND " << std::endl;
 	}
 
-	mDot.setBuffer(bDot);
-	mGamePlay.setBuffer(bGamePlay);
-	mGamePlay.play();
+	// Apple eat sound
+	if (!bBDot.loadFromFile("effect/bigdot.wav")) {
+		// error handling
+	}
+	else {
+		std::cout << " SOUND " << std::endl;
+	}
+
+	mDot.setBuffer(bDot); // point sound
+	mGamePlay.setBuffer(bGamePlay); // game play sound
+	mBDot.setBuffer(bBDot);   // 
+	mGamePlay.play(); 
 	mGamePlay.setLoop(true);
 
 }
@@ -228,6 +279,7 @@ void GamePlay::ProcessInput()
 					player.move(-32, 0);
 					dirX = -1;
 				}				
+				//player.setScale(-1, 1);
 				std::cout << " Left " << std::endl;
 				break;
 
@@ -237,8 +289,7 @@ void GamePlay::ProcessInput()
 					player.move(32, 0);
 					dirX = 1;
 				}
-			
-				right = true;
+				//player.setScale(1, 1);
 				std::cout << " Right " << std::endl;
 
 				break;
@@ -259,14 +310,18 @@ void GamePlay::ProcessInput()
 		}
 	}
 
-	if (maze1[y][x] == 3) { // 3 for fruits: when player eats a fruit he will have power like Wall making for 5 seconds
+	if (maze1[y][x] == 3) 
+	{ // 3 for fruits: when player eats a fruit he will have power like Wall making for 5 seconds
 		hasPowerUp = true;
 		powerUpTimer.restart();
 		// remove the fruit from the grid
 		maze1[y][x] = 0; // 0 for empty plane
 		points += 20;
+		if (!mute)
+			mBDot.play();
 	}
-	if (maze1[y][x] == 2) { // points
+	if (maze1[y][x] == 2) 
+	{ // points
 		points = points + 10;
 		maze1[y][x] = 0;
 		if(!mute)
@@ -274,6 +329,7 @@ void GamePlay::ProcessInput()
 	}
 	if (hasPowerUp && powerUpTimer.getElapsedTime().asSeconds() >= 5.0f) {
 		hasPowerUp = false;
+		std::cout << " POWER UP " << std::endl;
 	}
 	std::string s = std::to_string(points);
 	text.setString(s);
@@ -286,38 +342,57 @@ void GamePlay::Update(sf::Time deltaTime)
 {
 	//std::cout << " I am in GamePlay Update" << std::endl;
 
-	// draw the maps 
 
-
-	for (int i = 0; i < 10; i++) {
+	/****************************************************************************
+		Here stays Enemy which take the present grid and make the move at random 
+		direction using rand() function
+	****************************************************************************/
+	for (int i = 0; i < enemyCount; i++) {
 		enemy[i].move(maze1, ts); // ts = tile size
 	}
-	for (int i = 0; i < rows; i++)
+
+
+	/***************************************************
+		The main Map using maze1[28][28] grid value 
+		
+			if maze1[i][j] = 1 : Draw WALL
+			if maze1[i][j] = 2 : Draw POINTS
+			if maze1[i][j] = 3 : Draw APPLE
+
+	******************************************************/
+
+	for (int i = 0; i < rows; i++)           // rows = 28 cols = 28
 	{
 		for (int j = 0; j < cols; j++)
 		{
-			int pacx = sHero.getPosition().x / 32, pacy = sHero.getPosition().y / 32;
+			int pacx = sHero.getPosition().x / 32, pacy = sHero.getPosition().y / 32;  // get current pos
+			/*
+			  If the maze value is 1 then the sprite will be wall then we draw the sprite
+			*/
 			if (maze1[i][j] == 1)
 			{
 				wallSprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
 				wallSprite.setPosition(j * 32, i * 32);
 				mContext->mWindow->draw(wallSprite);
 			}
+			/*
+			  If the maze value is 2 then the sprite will be Dot then we draw the sprite
+			*/
 			else if (maze1[i][j] == 2)
 			{
 				//win = false;
 				dotSprite.setTextureRect(sf::IntRect(0, 0, 16, 16));
-				dotSprite.setColor(sf::Color::Red);
+				dotSprite.setColor(sf::Color::Green);
 				dotSprite.setPosition(j * 32 + 8, i * 32 + 8);
 				mContext->mWindow->draw(dotSprite);
-				if (pacx == j && pacy == i)
+				if (pacx == j && pacy == i)           // if player in this grid then player eat the point
 				{
-					maze1[i][j] = 0;
-					//score += 10;  //Abnb 
-					//if (eatdot.getStatus() == Music::Status::Stopped)
-						//eatdot.play();
+					maze1[i][j] = 0;           
 				}
 			}
+			/*
+			  If the maze value is 3 then the sprite will be Apple then we draw the sprite
+			*/
 			else if (maze1[i][j] == 3)
 			{
 				//win = false;
@@ -327,13 +402,9 @@ void GamePlay::Update(sf::Time deltaTime)
 				if (pacx == j && pacy == i)
 				{
 					maze1[i][j] = 0;
-					//fright = 1000;
-					//score += 50;  //Abnb 
-					//if (eatbigdot.getStatus() == Music::Status::Stopped)
-						//eatbigdot.play();
+				
 				}
 			}
-
 		}
 	}
 
@@ -349,20 +420,18 @@ void GamePlay::Update(sf::Time deltaTime)
 
 
 
-	// player power up 
+	// player power up  and wall making
 
 	if (hasPowerUp && sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 		// get the player's current grid position
 		int playerX = player.getPosition().x / 32;
 		int playerY = player.getPosition().y / 32;
 		// place a wall in the next grid cell in the player's direction
-		int nextX = playerX + dirX;
-		int nextY = playerY + dirY;
+		int nextX = playerX +dirX;
+		int nextY = playerY +dirY;
 		if (nextX >= 0 && nextX < 28 && nextY >= 0 && nextY < 28
-			&& maze1[nextY][nextX] == 0) {
+			&& maze1[nextY][nextX] == 0) { // look for empty space-
 			maze1[nextY][nextX] = 1; // 1 for wall
-			// play a sound effect
-			//placeWallSound.play();
 		}
 	}
 
@@ -378,27 +447,54 @@ void GamePlay::Update(sf::Time deltaTime)
 	}
 	if (check == 0) 
 	{
+		levelNo = std::to_string(level);
 		level++;
-		std::cout << " End " << std::endl;
+		Init();
 	}
-	
 }
 void GamePlay::Draw()
 {
-//	mContext->mWindow->clear();
 
-	for (int i = 0; i < 10; i++)
+//	mContext->mWindow->clear();
+	for (int i = 0; i < enemyCount; i++)
 	{
 		sHero.setPosition(enemy[i].x, enemy[i].y);
 		mContext->mWindow->draw(sHero);
-		if (player.getGlobalBounds().intersects(sHero.getGlobalBounds())) {
-			std::cout << " i am collide " << std::endl;
-			//mContext->mStates->Add(std::make_unique<GameOver>(mContext));
+		//deadTime.restart();
+			if (player.getGlobalBounds().intersects(sHero.getGlobalBounds())) {
+				//std::cout << " i am collide " << std::endl;
+				//mContext->mStates->Add(std::make_unique<GameOver>(mContext));
+				//deadIN = true;
 			
-		}
+				coll++;
+			}
 	}
-	mContext->mWindow->draw(player);
+	int a = (int)coll / 20;
+	if (a >= 1 and live > 0) {
+		//std::cout << a << std::endl;
+		coll = 0;
+		live--;
+		mBDot.play();
+	}
+	if (live == 0) {
+		std::cout << " GAME OVER " << std::endl;
+		mGamePlay.pause();
+		mContext->mStates->Add(std::make_unique<GameOver>(mContext));
+		
+	}
+	// Print the life
+	for (int i = 1; i <= live; i++) {
+		sLife.setPosition(1000 + i * 32*1.5,130);
+		sLife.setScale(0.1, 0.1);
+		mContext->mWindow->draw(sLife);
+	}
+
+	// check if power up
+	powerUp();
+	mContext->mWindow->draw(player);					// Draw the Main player
+	mContext->mWindow->draw(mGameTitle);				// Draw the game name
 	mContext->mWindow->draw(text); //ok
+	mContext->mWindow->draw(fNextLevel);//ok
 	mContext->mWindow->draw(text_score);//ok
 	mContext->mWindow->draw(control);
 	mContext->mWindow->draw(control1);
@@ -407,9 +503,15 @@ void GamePlay::Draw()
 	mContext->mWindow->draw(control4);
 	//mContext->mWindow->draw(sHero);
 
-
 	mContext->mWindow->display();
-
+}
+void GamePlay :: powerUp() {
+	if (hasPowerUp) {
+		playerTexture.loadFromFile("img/fright.png");
+	}
+	else {
+		playerTexture.loadFromFile("img/blinky.png");
+	}
 }
 
 void GamePlay::Pause()
@@ -421,19 +523,4 @@ void GamePlay::Start()
 {
 	isPaused = false;
 }
-
-
-// player 
-
-
-int GamePlay::pac_diffPOS(int Next_moving)
-{
-	int Next_tile = 0;
-	if (Next_moving > 0)  Next_tile = 32;
-	else if (Next_moving < 0)  Next_tile = -32;
-	else Next_tile = 0;
-
-	return Next_tile;
-}
-
 
