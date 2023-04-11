@@ -12,19 +12,13 @@ Project Manager:
           Professor
           Computer Science & Engineering Discipline
           Khulna University, Khulna, Bangladesh 
-         
-		                    &
                     
       Dr. Amit Kumar Mondal
-        
           Associate Professor
-        
           Computer Science & Engineering Discipline
-        
           Khulna University, Khulna, Bangladesh
           
 Developed By:
 
-Imran Rahman Ifty (200236)
-
-Md. Titas Ahmmed (200219)
+	Imran Rahman Ifty (200236)
+	Md. Titas Ahmmed (200219)
