@@ -8,15 +8,15 @@ Project Location : Khulna University
 
 Project Manager:
 
-      Dr. Kazi Masudul Alam
-          Professor
-          Computer Science & Engineering Discipline
-          Khulna University, Khulna, Bangladesh 
+	Dr. Kazi Masudul Alam
+        Professor
+        Computer Science & Engineering Discipline
+        Khulna University, Khulna, Bangladesh 
                     
-      Dr. Amit Kumar Mondal
-          Associate Professor
-          Computer Science & Engineering Discipline
-          Khulna University, Khulna, Bangladesh
+        Dr. Amit Kumar Mondal
+        Associate Professor
+        Computer Science & Engineering Discipline
+        Khulna University, Khulna, Bangladesh
           
 Developed By:
 
