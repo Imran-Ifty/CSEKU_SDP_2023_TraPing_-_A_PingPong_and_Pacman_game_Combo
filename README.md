@@ -36,3 +36,7 @@ Project Description :
 	added to the map . Once all the point will be eaten then player can go to the next level.
 
 ***
+
+
+![traping](https://user-images.githubusercontent.com/63757018/231252009-df928bb1-5ae9-4e08-b84e-2ee724430fd3.gif)
+
