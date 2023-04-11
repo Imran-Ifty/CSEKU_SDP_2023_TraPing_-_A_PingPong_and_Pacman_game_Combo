@@ -36,7 +36,15 @@ Project Description :
 	added to the map . Once all the point will be eaten then player can go to the next level.
 
 ***
-
+Game Demo:
 
 ![traping](https://user-images.githubusercontent.com/63757018/231252009-df928bb1-5ae9-4e08-b84e-2ee724430fd3.gif)
 
+***
+How to Play:
+
+	:Up    - moving up (Arrow key)
+	:Down  - moving down 
+	:Right - moving right
+	:Left  - moving left
+	:W     - create wall block (after eating straberry fruits player gets this power only for 5 seconds)
