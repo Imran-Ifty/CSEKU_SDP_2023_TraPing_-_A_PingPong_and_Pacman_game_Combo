@@ -9,11 +9,8 @@ Project Location : Khulna University
 Project Manager:
 
       Dr. Kazi Masudul Alam
-
           Professor
-         
           Computer Science & Engineering Discipline
-         
           Khulna University, Khulna, Bangladesh 
          
 		                    &
