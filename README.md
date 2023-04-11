@@ -34,3 +34,5 @@ Project Description :
 	added to the player’s scoreboard. Each time the player eats a straberry it gets a power ups 
 	for 5 seconds ,	means player can create new wall by pressing key "W" and new wall will be 
 	added to the map . Once all the point will be eaten then player can go to the next level.
+
+***
