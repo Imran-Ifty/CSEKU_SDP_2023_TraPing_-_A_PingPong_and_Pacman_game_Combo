@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\font">
+      <UniqueIdentifier>{8ed05811-0a6c-4661-8a07-cb972e08e717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\img">
+      <UniqueIdentifier>{5c2c6dca-ed00-4c3d-b754-9fc0d6adb21c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\effect">
+      <UniqueIdentifier>{aa97a7f6-138c-4a59-8edb-9abcf4352f06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\map">
+      <UniqueIdentifier>{91ea44d5-ab59-4361-86f6-34cd0e29f72b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\score">
+      <UniqueIdentifier>{d5ff92aa-9a6c-4724-887c-1d6065b6800f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\MapFile">
+      <UniqueIdentifier>{4315d1ea-4a99-4716-b75a-4198d22d2a2d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreBoard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="font\ARIAL.TTF">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+    <Font Include="font\BloodLust.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+    <Font Include="font\Heavy-Metal-Rocking.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+    <Font Include="font\MotionPicture_PersonalUseOnly.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+    <Font Include="font\prstartk.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+    <Font Include="font\Minecraft.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+    <Font Include="font\Kaph-Italic.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+    <Font Include="font\Kaph-Regular.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+    <Font Include="font\PixeloidMono.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+    <Font Include="font\PixeloidSans.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+    <Font Include="font\PixeloidSans-Bold.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+    <Font Include="font\Squares.ttf">
+      <Filter>Resource Files\font</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="img\abc.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\Back__Score.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\bigdot.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\blinky.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\blinky2.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\dot.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\drawurmaze.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\fright.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\g1.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\g3.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\g4.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\live.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\pac.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\sheet.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\startbackground.jpg">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\wall.jpg">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\looo.png">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+    <Image Include="img\bg.jpg">
+      <Filter>Resource Files\img</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="effect\bigdot.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\dot.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\pacman_beginning.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\pacman_chomp.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\pacman_death.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\pacman_eatghost.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\pacman_extrapac.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\pacman_intermission.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\siren.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\win.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\menuSong.mp3">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\menu.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\click.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\pressed.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\gameSong.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+    <Media Include="effect\point.wav">
+      <Filter>Resource Files\effect</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="map\drawurmaze.txt">
+      <Filter>Resource Files\map</Filter>
+    </Text>
+    <Text Include="map\map1.txt">
+      <Filter>Resource Files\map</Filter>
+    </Text>
+    <Text Include="map\map2.txt">
+      <Filter>Resource Files\map</Filter>
+    </Text>
+    <Text Include="map\map3.txt">
+      <Filter>Resource Files\map</Filter>
+    </Text>
+    <Text Include="Score\Score.txt">
+      <Filter>Resource Files\score</Filter>
+    </Text>
+    <Text Include="filename.txt">
+      <Filter>Resource Files\MapFile</Filter>
+    </Text>
+    <Text Include="map\map.txt">
+      <Filter>Resource Files\map</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

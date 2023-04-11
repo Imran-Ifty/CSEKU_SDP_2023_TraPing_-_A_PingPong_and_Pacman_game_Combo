@@ -1,0 +1,12 @@
+﻿  main.cpp
+main.obj : error LNK2019: unresolved external symbol "public: __cdecl sf::String::String(char const *,class std::locale const &)" (??0String@sf@@QEAA@PEBDAEBVlocale@std@@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "public: __cdecl sf::VideoMode::VideoMode(unsigned int,unsigned int,unsigned int)" (??0VideoMode@sf@@QEAA@III@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "public: void __cdecl sf::Window::close(void)" (?close@Window@sf@@QEAAXXZ) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "public: bool __cdecl sf::Window::isOpen(void)const " (?isOpen@Window@sf@@QEBA_NXZ) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "public: bool __cdecl sf::Window::pollEvent(class sf::Event &)" (?pollEvent@Window@sf@@QEAA_NAEAVEvent@2@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "public: __cdecl sf::RenderWindow::RenderWindow(class sf::VideoMode,class sf::String const &,unsigned int,struct sf::ContextSettings const &)" (??0RenderWindow@sf@@QEAA@VVideoMode@1@AEBVString@1@IAEBUContextSettings@1@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "public: virtual __cdecl sf::RenderWindow::~RenderWindow(void)" (??1RenderWindow@sf@@UEAA@XZ) referenced in function main
+C:\SFML-2.5.1\lib\sfml-graphics.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\SFML-2.5.1\lib\sfml-window.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\SFML-2.5.1\lib\sfml-system.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+F:\PACMAN\Traping Combo\TraPing\x64\Debug\TraPing.exe : fatal error LNK1120: 7 unresolved externals
