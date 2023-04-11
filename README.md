@@ -31,4 +31,6 @@ Project Description :
 	C++.The player can move both up/down and left/right using the keyboard and avoid the
 	moving obstacles which will be moving with the help of ping-pong ball logic. The player can
 	create wall to trap the moving obstacle and eat all the points  and then score will be
-	added to the player’s scoreboard. Each time the player eats a straberry it gets a power ups for 5 seconds , means player can create new wall by pressing key "W" and new wall will be added to the map . Once all the point will be eaten then player can go to the next level.
+	added to the player’s scoreboard. Each time the player eats a straberry it gets a power ups 
+	for 5 seconds ,	means player can create new wall by pressing key "W" and new wall will be 
+	added to the map . Once all the point will be eaten then player can go to the next level.
